@@ -439,6 +439,15 @@ pheatmap(hm_Data,
          color = myColor,
          annotation_col = hm_Index, 
          filename = paste0("../2_Output/", ANALYSIS, "/DMR/", ANALYSIS, "_Heatmap.Q05.pdf"))
+pheatmap(hm_Data,
+         cluster_cols=T, 
+         border_color=NA, 
+         cluster_rows=T, 
+         scale = 'row',
+         show_colnames = T, 
+         show_rownames = F, 
+         color = myColor,
+         annotation_col = hm_Index)
 ```
 
 # Circular Genome plot of CpG Sites
@@ -591,6 +600,34 @@ dev.off()
 ##                 2
 ```
 
+```r
+om = circos.par("track.margin")
+oc = circos.par("cell.padding")
+circos.par(track.margin = c(0, 0), cell.padding = c(0, 0, 0, 0))
+circos.par(start.degree = -250)
+circos.initializeWithIdeogram(track.height = 0.05)
+### Labels for inversely changing DMRs with DEG
+circos.genomicDensity(DMR.PerChange, col = c("black"), track.height = 0.1, baseline="bottom", bg.border ="white", track.margin = c(0, 0.0))
+##DEG with inverse GPI Islands Promoters
+circos.genomicTrackPlotRegion(Methyl.List,
+                              ylim = c(-100, 100), bg.border=NA,
+                              panel.fun = function(region, value, ...) {
+ col = ifelse(value[[1]] > 0, "coral2", "darkcyan")
+ circos.genomicPoints(region, value, col = add_transparency(col, 0.2), cex = 0.3, pch = 16)
+ cell.xlim = get.cell.meta.data("cell.xlim")
+ for(h in c(-50, 0, 50, 100)) {
+   circos.lines(cell.xlim, c(h, h), col ="#00000040")
+ }
+}, track.height = 0.2)
+circos.genomicLabels(Gene_labels, labels.column=4, side='inside', cex=0.6)
+```
+
+![](README_files/figure-html/Circos-1.png)<!-- -->
+
+```r
+circos.clear()
+```
+
 #ELK4 Motif Enrichment
 
 
@@ -648,6 +685,25 @@ dev.off()
 ```
 ## quartz_off_screen 
 ##                 2
+```
+
+```r
+om = circos.par("track.margin")
+oc = circos.par("cell.padding")
+circos.par(track.margin = c(0, 0), cell.padding = c(0, 0, 0, 0))
+circos.par(start.degree = -190)
+circos.initializeWithIdeogram(plotType = NULL)
+circos.genomicLabels(ELK4_targets.labels, labels.column=4, side='outside', cex=.8)
+# circos.genomicLink(ELK4_targets_DOWN, Down_anchor, 
+#                    col="dodgerblue3", lwd=2)
+circos.genomicLink(ELK4_targets_UP, Up_anchor, 
+                   col="black", lwd=2)
+```
+
+![](README_files/figure-html/ELK4-1.png)<!-- -->
+
+```r
+circos.clear()
 ```
 
 ##Volcano Plot
