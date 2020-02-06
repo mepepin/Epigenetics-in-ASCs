@@ -138,13 +138,13 @@ library(graphics)
 getMethylationStats(myobj_filtered[[2]], plot = T, both.strands = F)
 ```
 
-![](DMRs_ASC_resubmit_files/figure-html/Methylation_stats-1.png)<!-- -->
+![](README_files/figure-html/Methylation_stats-1.png)<!-- -->
 
 ```r
 getCoverageStats(myobj_filtered[[2]], plot = T, both.strands = F)
 ```
 
-![](DMRs_ASC_resubmit_files/figure-html/Methylation_stats-2.png)<!-- -->
+![](README_files/figure-html/Methylation_stats-2.png)<!-- -->
 
 ```r
 #Save these files in an output folder
@@ -382,7 +382,7 @@ dm_vs_kg_annotations.tile = plot_annotation(
 print(dm_vs_kg_annotations.tile)
 ```
 
-![](DMRs_ASC_resubmit_files/figure-html/tiling-1.png)<!-- -->
+![](README_files/figure-html/tiling-1.png)<!-- -->
 
 ```r
 annots_order = c(
@@ -401,7 +401,7 @@ dm_vs_kg_annotations = plot_annotation(
 print(dm_vs_kg_annotations)
 ```
 
-![](DMRs_ASC_resubmit_files/figure-html/tiling-2.png)<!-- -->
+![](README_files/figure-html/tiling-2.png)<!-- -->
 
 #Heatmap of Differential Methylation
 
@@ -680,7 +680,7 @@ scale_fill_manual(values=c("black", "tomato"))
 p+geom_text_repel(data=filter(results, minuslogqvalue>15 & abs(meth.diff)>25), aes(label=Gene.Symbol))
 ```
 
-![](DMRs_ASC_resubmit_files/figure-html/Volcano-1.png)<!-- -->
+![](README_files/figure-html/Volcano-1.png)<!-- -->
 
 ```r
 ##Export Volcano Plot
