@@ -353,55 +353,7 @@ saveWorkbook(wb_WGBS_Annotate, file = paste0("../2_Output/", ANALYSIS, "/DMR/", 
 dm_annsum.tile = summarize_annotations(
     annotated_regions = dm_annotated.tiles,
     quiet = TRUE)
-print(dm_annsum.tile)
 ```
-
-```
-## # A tibble: 10 x 2
-##    annot.type               n
-##    <chr>                <int>
-##  1 hg38_cpg_inter        7347
-##  2 hg38_cpg_islands      7638
-##  3 hg38_cpg_shelves      1194
-##  4 hg38_cpg_shores       6992
-##  5 hg38_genes_1to5kb     5985
-##  6 hg38_genes_3UTRs      1413
-##  7 hg38_genes_5UTRs      3547
-##  8 hg38_genes_exons      8510
-##  9 hg38_genes_introns   11896
-## 10 hg38_genes_promoters  6200
-```
-
-```r
-#Plot the annotation distribution
-dm_vs_kg_annotations.tile = plot_annotation(
-    annotated_regions = dm_annotated.tiles,
-    plot_title = '# of Sites Tested',
-    x_label = 'knownGene Annotations',
-    y_label = 'Count')
-print(dm_vs_kg_annotations.tile)
-```
-
-![](README_files/figure-html/tiling-1.png)<!-- -->
-
-```r
-annots_order = c(
-    'hg38_genes_1to5kb',
-    'hg38_genes_promoters',
-    'hg38_genes_5UTRs',
-    'hg38_genes_exons',
-    'hg38_genes_introns',
-    'hg38_genes_3UTRs')
-dm_vs_kg_annotations = plot_annotation(
-    annotated_regions = dm_annotated.tiles,
-    annotation_order = annots_order,
-    plot_title = '# of Sites Tested for differentially-methylated positions',
-    x_label = 'knownGene Annotations',
-    y_label = 'Count')
-print(dm_vs_kg_annotations)
-```
-
-![](README_files/figure-html/tiling-2.png)<!-- -->
 
 #Heatmap of Differential Methylation
 
@@ -769,7 +721,7 @@ sinfo$platform
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       America/Chicago             
-##  date     2020-02-06
+##  date     2020-02-15
 ```
 
 ```r
@@ -887,13 +839,13 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> bdsmatrix </td>
    <td style="text-align:center;"> bdsmatrix </td>
-   <td style="text-align:center;"> 1.3.3 </td>
-   <td style="text-align:center;"> 1.3-3 </td>
+   <td style="text-align:center;"> 1.3.4 </td>
+   <td style="text-align:center;"> 1.3-4 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/bdsmatrix </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/bdsmatrix </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2017-12-21 </td>
+   <td style="text-align:center;"> 2020-01-13 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -999,13 +951,13 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> bit </td>
    <td style="text-align:center;"> bit </td>
-   <td style="text-align:center;"> 1.1.14 </td>
-   <td style="text-align:center;"> 1.1-14 </td>
+   <td style="text-align:center;"> 1.1.15.1 </td>
+   <td style="text-align:center;"> 1.1-15.1 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/bit </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/bit </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2018-05-29 </td>
+   <td style="text-align:center;"> 2020-01-14 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -1041,13 +993,13 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> blob </td>
    <td style="text-align:center;"> blob </td>
-   <td style="text-align:center;"> 1.2.0 </td>
-   <td style="text-align:center;"> 1.2.0 </td>
+   <td style="text-align:center;"> 1.2.1 </td>
+   <td style="text-align:center;"> 1.2.1 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/blob </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/blob </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-07-09 </td>
+   <td style="text-align:center;"> 2020-01-20 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -1069,13 +1021,13 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> callr </td>
    <td style="text-align:center;"> callr </td>
-   <td style="text-align:center;"> 3.4.0 </td>
-   <td style="text-align:center;"> 3.4.0 </td>
+   <td style="text-align:center;"> 3.4.1 </td>
+   <td style="text-align:center;"> 3.4.1 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/callr </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/callr </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-12-09 </td>
+   <td style="text-align:center;"> 2020-01-24 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -1097,13 +1049,13 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> cli </td>
    <td style="text-align:center;"> cli </td>
-   <td style="text-align:center;"> 2.0.0 </td>
-   <td style="text-align:center;"> 2.0.0 </td>
+   <td style="text-align:center;"> 2.0.1 </td>
+   <td style="text-align:center;"> 2.0.1 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/cli </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/cli </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-12-09 </td>
+   <td style="text-align:center;"> 2020-01-08 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -1335,13 +1287,13 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> fansi </td>
    <td style="text-align:center;"> fansi </td>
-   <td style="text-align:center;"> 0.4.0 </td>
-   <td style="text-align:center;"> 0.4.0 </td>
+   <td style="text-align:center;"> 0.4.1 </td>
+   <td style="text-align:center;"> 0.4.1 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/fansi </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/fansi </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2018-10-05 </td>
+   <td style="text-align:center;"> 2020-01-08 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -1349,13 +1301,13 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> farver </td>
    <td style="text-align:center;"> farver </td>
-   <td style="text-align:center;"> 2.0.1 </td>
-   <td style="text-align:center;"> 2.0.1 </td>
+   <td style="text-align:center;"> 2.0.3 </td>
+   <td style="text-align:center;"> 2.0.3 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/farver </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/farver </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-11-13 </td>
+   <td style="text-align:center;"> 2020-01-16 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -1425,7 +1377,7 @@ sinfo$packages %>% kable(
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/GenomeInfoDbData </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-10-14 </td>
+   <td style="text-align:center;"> 2019-07-06 </td>
    <td style="text-align:center;"> Bioconductor </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -1559,14 +1511,14 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> hms </td>
    <td style="text-align:center;"> hms </td>
-   <td style="text-align:center;"> 0.5.2 </td>
-   <td style="text-align:center;"> 0.5.2 </td>
+   <td style="text-align:center;"> 0.5.3 </td>
+   <td style="text-align:center;"> 0.5.3 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/hms </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/hms </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-10-30 </td>
-   <td style="text-align:center;"> CRAN (R 3.6.1) </td>
+   <td style="text-align:center;"> 2020-01-08 </td>
+   <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
   </tr>
@@ -1608,7 +1560,7 @@ sinfo$packages %>% kable(
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> 2019-08-05 </td>
-   <td style="text-align:center;"> CRAN (R 3.6.0) </td>
+   <td style="text-align:center;"> CRAN (R 3.6.1) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
   </tr>
@@ -1657,13 +1609,13 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> knitr </td>
    <td style="text-align:center;"> knitr </td>
-   <td style="text-align:center;"> 1.26 </td>
-   <td style="text-align:center;"> 1.26 </td>
+   <td style="text-align:center;"> 1.27 </td>
+   <td style="text-align:center;"> 1.27 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/knitr </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/knitr </td>
    <td style="text-align:center;"> TRUE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-11-12 </td>
+   <td style="text-align:center;"> 2020-01-16 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -1895,13 +1847,13 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> mvtnorm </td>
    <td style="text-align:center;"> mvtnorm </td>
-   <td style="text-align:center;"> 1.0.11 </td>
-   <td style="text-align:center;"> 1.0-11 </td>
+   <td style="text-align:center;"> 1.0.12 </td>
+   <td style="text-align:center;"> 1.0-12 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/mvtnorm </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/mvtnorm </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-06-19 </td>
+   <td style="text-align:center;"> 2020-01-09 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -1957,7 +1909,7 @@ sinfo$packages %>% kable(
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/org.Hs.eg.db </td>
    <td style="text-align:center;"> TRUE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-10-18 </td>
+   <td style="text-align:center;"> 2019-08-06 </td>
    <td style="text-align:center;"> Bioconductor </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -2049,13 +2001,13 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> prettyunits </td>
    <td style="text-align:center;"> prettyunits </td>
-   <td style="text-align:center;"> 1.0.2 </td>
-   <td style="text-align:center;"> 1.0.2 </td>
+   <td style="text-align:center;"> 1.1.1 </td>
+   <td style="text-align:center;"> 1.1.1 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/prettyunits </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/prettyunits </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2015-07-13 </td>
+   <td style="text-align:center;"> 2020-01-24 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -2245,13 +2197,13 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> RCurl </td>
    <td style="text-align:center;"> RCurl </td>
-   <td style="text-align:center;"> 1.95.4.12 </td>
-   <td style="text-align:center;"> 1.95-4.12 </td>
+   <td style="text-align:center;"> 1.98.1.1 </td>
+   <td style="text-align:center;"> 1.98-1.1 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/RCurl </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/RCurl </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-03-04 </td>
+   <td style="text-align:center;"> 2020-01-19 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -2315,13 +2267,13 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> rlang </td>
    <td style="text-align:center;"> rlang </td>
-   <td style="text-align:center;"> 0.4.2 </td>
-   <td style="text-align:center;"> 0.4.2 </td>
+   <td style="text-align:center;"> 0.4.3 </td>
+   <td style="text-align:center;"> 0.4.3 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rlang </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rlang </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-11-23 </td>
+   <td style="text-align:center;"> 2020-01-24 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -2329,13 +2281,13 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> rmarkdown </td>
    <td style="text-align:center;"> rmarkdown </td>
-   <td style="text-align:center;"> 2.0 </td>
-   <td style="text-align:center;"> 2.0 </td>
+   <td style="text-align:center;"> 2.1 </td>
+   <td style="text-align:center;"> 2.1 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rmarkdown </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rmarkdown </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-12-12 </td>
+   <td style="text-align:center;"> 2020-01-20 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -2371,13 +2323,13 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> RSQLite </td>
    <td style="text-align:center;"> RSQLite </td>
-   <td style="text-align:center;"> 2.1.5 </td>
-   <td style="text-align:center;"> 2.1.5 </td>
+   <td style="text-align:center;"> 2.2.0 </td>
+   <td style="text-align:center;"> 2.2.0 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/RSQLite </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/RSQLite </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-12-18 </td>
+   <td style="text-align:center;"> 2020-01-07 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -2497,13 +2449,13 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> stringi </td>
    <td style="text-align:center;"> stringi </td>
-   <td style="text-align:center;"> 1.4.3 </td>
-   <td style="text-align:center;"> 1.4.3 </td>
+   <td style="text-align:center;"> 1.4.5 </td>
+   <td style="text-align:center;"> 1.4.5 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/stringi </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/stringi </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-03-12 </td>
+   <td style="text-align:center;"> 2020-01-11 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -2567,13 +2519,13 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> tidyr </td>
    <td style="text-align:center;"> tidyr </td>
-   <td style="text-align:center;"> 1.0.0 </td>
-   <td style="text-align:center;"> 1.0.0 </td>
+   <td style="text-align:center;"> 1.0.2 </td>
+   <td style="text-align:center;"> 1.0.2 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/tidyr </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/tidyr </td>
    <td style="text-align:center;"> TRUE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-09-11 </td>
+   <td style="text-align:center;"> 2020-01-24 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -2601,7 +2553,7 @@ sinfo$packages %>% kable(
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/TxDb.Hsapiens.UCSC.hg38.knownGene </td>
    <td style="text-align:center;"> TRUE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-10-14 </td>
+   <td style="text-align:center;"> 2019-08-06 </td>
    <td style="text-align:center;"> Bioconductor </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -2621,29 +2573,15 @@ sinfo$packages %>% kable(
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> utf8 </td>
-   <td style="text-align:center;"> utf8 </td>
-   <td style="text-align:center;"> 1.1.4 </td>
-   <td style="text-align:center;"> 1.1.4 </td>
-   <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/utf8 </td>
-   <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/utf8 </td>
-   <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2018-05-24 </td>
-   <td style="text-align:center;"> CRAN (R 3.6.0) </td>
-   <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> vctrs </td>
    <td style="text-align:center;"> vctrs </td>
-   <td style="text-align:center;"> 0.2.1 </td>
-   <td style="text-align:center;"> 0.2.1 </td>
+   <td style="text-align:center;"> 0.2.2 </td>
+   <td style="text-align:center;"> 0.2.2 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/vctrs </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/vctrs </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-12-17 </td>
+   <td style="text-align:center;"> 2020-01-24 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -2693,13 +2631,13 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> xfun </td>
    <td style="text-align:center;"> xfun </td>
-   <td style="text-align:center;"> 0.11 </td>
-   <td style="text-align:center;"> 0.11 </td>
+   <td style="text-align:center;"> 0.12 </td>
+   <td style="text-align:center;"> 0.12 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/xfun </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/xfun </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-11-12 </td>
+   <td style="text-align:center;"> 2020-01-13 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -2707,13 +2645,13 @@ sinfo$packages %>% kable(
   <tr>
    <td style="text-align:left;"> XML </td>
    <td style="text-align:center;"> XML </td>
-   <td style="text-align:center;"> 3.98.1.20 </td>
-   <td style="text-align:center;"> 3.98-1.20 </td>
+   <td style="text-align:center;"> 3.99.0.3 </td>
+   <td style="text-align:center;"> 3.99-0.3 </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/XML </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/XML </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2019-06-06 </td>
+   <td style="text-align:center;"> 2020-01-20 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
@@ -2770,20 +2708,6 @@ sinfo$packages %>% kable(
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> FALSE </td>
    <td style="text-align:center;"> 2018-07-25 </td>
-   <td style="text-align:center;"> CRAN (R 3.6.0) </td>
-   <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> zeallot </td>
-   <td style="text-align:center;"> zeallot </td>
-   <td style="text-align:center;"> 0.1.0 </td>
-   <td style="text-align:center;"> 0.1.0 </td>
-   <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/zeallot </td>
-   <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library/zeallot </td>
-   <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> FALSE </td>
-   <td style="text-align:center;"> 2018-01-28 </td>
    <td style="text-align:center;"> CRAN (R 3.6.0) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;"> /Library/Frameworks/R.framework/Versions/3.6/Resources/library </td>
