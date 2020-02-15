@@ -1,0 +1,136 @@
+
+SUMMARISING RUN PARAMETERS
+==========================
+Input filename: /data/scratch/pepinme/Napoli/Input/fastq/ASC_DMSO_12_10_R2_001.fastq.gz
+Trimming mode: paired-end
+Trim Galore version: 0.6.1
+Cutadapt version: 2.3
+Number of cores used for trimming: 1
+Quality Phred score cutoff: 20
+Quality encoding type selected: ASCII+33
+Adapter sequence: 'AGATCGGAAGAGC' (Illumina TruSeq, Sanger iPCR; auto-detected)
+Maximum trimming error rate: 0.1 (default)
+Minimum required adapter overlap (stringency): 1 bp
+Minimum required sequence length for both reads before a sequence pair gets removed: 20 bp
+File was specified to be an MspI-digested RRBS sample. Read 1 sequences with adapter contamination will be trimmed a further 2 bp from their 3' end, and Read 2 sequences will be trimmed by 2 bp from their 5' end to remove potential methylation-biased bases from the end-repair reaction
+File was specified to be a non-directional MspI-digested RRBS sample. Sequences starting with either 'CAA' or 'CGA' will have the first 2 bp trimmed off to remove potential methylation-biased bases from the end-repair reaction
+Running FastQC on the data once trimming has completed
+Output file will be GZIP compressed
+
+
+This is cutadapt 2.3 with Python 3.7.3
+Command line parameters: -j 1 -e 0.1 -O 1 -a AGATCGGAAGAGC /scratch/pepinme/Napoli/Input/fastq_trimmed/ASC_DMSO_12_10_R2_001.fastq.gz_qual_trimmed.fastq
+Processing reads on 1 core in single-end mode ...
+Finished in 441.27 s (22 us/read; 2.70 M reads/minute).
+
+=== Summary ===
+
+Total reads processed:              19,848,037
+Reads with adapters:                11,966,171 (60.3%)
+Reads written (passing filters):    19,848,037 (100.0%)
+
+Total basepairs processed: 1,424,888,999 bp
+Total written (filtered):  1,298,657,855 bp (91.1%)
+
+=== Adapter 1 ===
+
+Sequence: AGATCGGAAGAGC; Type: regular 3'; Length: 13; Trimmed: 11966171 times.
+
+No. of allowed errors:
+0-9 bp: 0; 10-13 bp: 1
+
+Bases preceding removed adapters:
+  A: 47.2%
+  C: 22.3%
+  G: 19.0%
+  T: 11.5%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+1	5333186	4962009.2	0	5333186
+2	275565	1240502.3	0	275565
+3	215816	310125.6	0	215816
+4	211004	77531.4	0	211004
+5	540489	19382.8	0	540489
+6	223664	4845.7	0	223664
+7	193624	1211.4	0	193624
+8	178881	302.9	0	178881
+9	145773	75.7	0	145667 106
+10	204988	18.9	1	186518 18470
+11	144848	4.7	1	129552 15296
+12	175384	1.2	1	156004 19380
+13	163198	0.3	1	144428 18770
+14	178015	0.3	1	155532 22483
+15	149262	0.3	1	132357 16905
+16	179252	0.3	1	155638 23614
+17	179270	0.3	1	155371 23899
+18	190671	0.3	1	168246 22425
+19	337438	0.3	1	302530 34908
+20	125088	0.3	1	109815 15273
+21	118821	0.3	1	100650 18171
+22	120706	0.3	1	108927 11779
+23	169741	0.3	1	151277 18464
+24	302156	0.3	1	271060 31096
+25	54563	0.3	1	46259 8304
+26	126642	0.3	1	110336 16306
+27	207797	0.3	1	180147 27650
+28	127169	0.3	1	116548 10621
+29	114501	0.3	1	97542 16959
+30	121567	0.3	1	110349 11218
+31	90687	0.3	1	80529 10158
+32	165263	0.3	1	149923 15340
+33	137910	0.3	1	124686 13224
+34	76299	0.3	1	65167 11132
+35	134411	0.3	1	123862 10549
+36	44974	0.3	1	38049 6925
+37	99272	0.3	1	90776 8496
+38	24673	0.3	1	20796 3877
+39	49222	0.3	1	44310 4912
+40	21701	0.3	1	18335 3366
+41	49738	0.3	1	44146 5592
+42	74884	0.3	1	67663 7221
+43	23616	0.3	1	20693 2923
+44	34270	0.3	1	30712 3558
+45	57726	0.3	1	52413 5313
+46	20607	0.3	1	18444 2163
+47	5708	0.3	1	4722 986
+48	25868	0.3	1	23601 2267
+49	6068	0.3	1	5196 872
+50	7505	0.3	1	6647 858
+51	4385	0.3	1	3982 403
+52	1182	0.3	1	1024 158
+53	506	0.3	1	429 77
+54	447	0.3	1	416 31
+55	32	0.3	1	28 4
+56	28	0.3	1	21 7
+57	8	0.3	1	6 2
+58	8	0.3	1	6 2
+59	4	0.3	1	3 1
+60	4	0.3	1	2 2
+61	8	0.3	1	7 1
+62	3	0.3	1	2 1
+63	10	0.3	1	7 3
+64	7	0.3	1	7
+65	9	0.3	1	6 3
+66	9	0.3	1	4 5
+67	4	0.3	1	1 3
+68	2	0.3	1	1 1
+69	1	0.3	1	1
+70	6	0.3	1	4 2
+71	6	0.3	1	4 2
+72	5	0.3	1	4 1
+73	8	0.3	1	1 7
+74	2	0.3	1	0 2
+75	6	0.3	1	0 6
+
+RUN STATISTICS FOR INPUT FILE: /data/scratch/pepinme/Napoli/Input/fastq/ASC_DMSO_12_10_R2_001.fastq.gz
+=============================================
+19848037 sequences processed in total
+Sequences were truncated to a varying degree because of deteriorating qualities (Phred score quality cutoff: 20):	6321132 (31.8%)
+RRBS reads trimmed by additional 2 bp when adapter contamination was detected:	0 (0.0%)
+RRBS reads trimmed by 2 bp at the start when read started with CAA (9448873) or CGA (571051) in total:	10019924 (50.5%)
+
+Total number of sequences analysed for the sequence pair length validation: 19848037
+
+Number of sequence pairs removed because at least one read was shorter than the length cutoff (20 bp): 599054 (3.02%)

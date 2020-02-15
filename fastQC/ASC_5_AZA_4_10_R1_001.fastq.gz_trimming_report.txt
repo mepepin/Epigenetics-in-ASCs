@@ -1,0 +1,141 @@
+
+SUMMARISING RUN PARAMETERS
+==========================
+Input filename: /data/scratch/pepinme/Napoli/Input/fastq/ASC_5_AZA_4_10_R1_001.fastq.gz
+Trimming mode: paired-end
+Trim Galore version: 0.6.1
+Cutadapt version: 2.3
+Number of cores used for trimming: 1
+Quality Phred score cutoff: 20
+Quality encoding type selected: ASCII+33
+Adapter sequence: 'AGATCGGAAGAGC' (Illumina TruSeq, Sanger iPCR; auto-detected)
+Maximum trimming error rate: 0.1 (default)
+Minimum required adapter overlap (stringency): 1 bp
+Minimum required sequence length for both reads before a sequence pair gets removed: 20 bp
+File was specified to be an MspI-digested RRBS sample. Read 1 sequences with adapter contamination will be trimmed a further 2 bp from their 3' end, and Read 2 sequences will be trimmed by 2 bp from their 5' end to remove potential methylation-biased bases from the end-repair reaction
+File was specified to be a non-directional MspI-digested RRBS sample. Sequences starting with either 'CAA' or 'CGA' will have the first 2 bp trimmed off to remove potential methylation-biased bases from the end-repair reaction
+Running FastQC on the data once trimming has completed
+Output file will be GZIP compressed
+
+
+This is cutadapt 2.3 with Python 3.7.3
+Command line parameters: -j 1 -e 0.1 -O 1 -a AGATCGGAAGAGC /scratch/pepinme/Napoli/Input/fastq_trimmed/ASC_5_AZA_4_10_R1_001.fastq.gz_qual_trimmed.fastq
+Processing reads on 1 core in single-end mode ...
+Finished in 318.11 s (19 us/read; 3.23 M reads/minute).
+
+=== Summary ===
+
+Total reads processed:              17,115,269
+Reads with adapters:                10,295,086 (60.2%)
+Reads written (passing filters):    17,115,269 (100.0%)
+
+Total basepairs processed: 1,274,472,150 bp
+Total written (filtered):  1,124,744,898 bp (88.3%)
+
+=== Adapter 1 ===
+
+Sequence: AGATCGGAAGAGC; Type: regular 3'; Length: 13; Trimmed: 10295086 times.
+
+No. of allowed errors:
+0-9 bp: 0; 10-13 bp: 1
+
+Bases preceding removed adapters:
+  A: 6.0%
+  C: 0.5%
+  G: 81.6%
+  T: 12.0%
+  none/other: 0.0%
+WARNING:
+    The adapter is preceded by "G" extremely often.
+    The provided adapter sequence could be incomplete at its 3' end.
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+1	1615287	4278817.2	0	1615287
+2	934115	1069704.3	0	934115
+3	296273	267426.1	0	296273
+4	367772	66856.5	0	367772
+5	1270911	16714.1	0	1270911
+6	255346	4178.5	0	255346
+7	194977	1044.6	0	194977
+8	156289	261.2	0	156289
+9	147749	65.3	0	147551 198
+10	187692	16.3	1	175795 11897
+11	123670	4.1	1	114201 9469
+12	147493	1.0	1	135858 11635
+13	161940	0.3	1	147712 14228
+14	148086	0.3	1	137158 10928
+15	164641	0.3	1	148638 16003
+16	131551	0.3	1	121341 10210
+17	161492	0.3	1	145096 16396
+18	160284	0.3	1	147143 13141
+19	145674	0.3	1	132290 13384
+20	167417	0.3	1	152175 15242
+21	219963	0.3	1	202299 17664
+22	238297	0.3	1	219422 18875
+23	197057	0.3	1	181912 15145
+24	145931	0.3	1	133609 12322
+25	155228	0.3	1	142510 12718
+26	120907	0.3	1	111415 9492
+27	129687	0.3	1	119367 10320
+28	184519	0.3	1	169126 15393
+29	128781	0.3	1	118837 9944
+30	115134	0.3	1	106431 8703
+31	127776	0.3	1	116956 10820
+32	187922	0.3	1	173014 14908
+33	104758	0.3	1	96288 8470
+34	111937	0.3	1	103132 8805
+35	121841	0.3	1	111648 10193
+36	168166	0.3	1	150630 17536
+37	102334	0.3	1	94666 7668
+38	94373	0.3	1	87529 6844
+39	86545	0.3	1	79994 6551
+40	81039	0.3	1	74163 6876
+41	113212	0.3	1	102887 10325
+42	153711	0.3	1	143924 9787
+43	50595	0.3	1	46851 3744
+44	34356	0.3	1	31532 2824
+45	16740	0.3	1	15356 1384
+46	23215	0.3	1	21451 1764
+47	29499	0.3	1	27374 2125
+48	29198	0.3	1	26637 2561
+49	26155	0.3	1	24121 2034
+50	11584	0.3	1	10749 835
+51	7239	0.3	1	6638 601
+52	4036	0.3	1	3694 342
+53	1686	0.3	1	1430 256
+54	1133	0.3	1	699 434
+55	467	0.3	1	207 260
+56	221	0.3	1	90 131
+57	77	0.3	1	5 72
+58	268	0.3	1	1 267
+59	84	0.3	1	2 82
+60	82	0.3	1	0 82
+61	308	0.3	1	0 308
+62	113	0.3	1	1 112
+63	83	0.3	1	0 83
+64	245	0.3	1	0 245
+65	1015	0.3	1	0 1015
+66	284	0.3	1	2 282
+67	525	0.3	1	0 525
+68	739	0.3	1	1 738
+69	1496	0.3	1	0 1496
+70	4751	0.3	1	1 4750
+71	11767	0.3	1	0 11767
+72	4493	0.3	1	1 4492
+73	1938	0.3	1	1 1937
+74	1073	0.3	1	0 1073
+75	1844	0.3	1	0 1844
+
+
+WARNING:
+    One or more of your adapter sequences may be incomplete.
+    Please see the detailed output above.
+
+RUN STATISTICS FOR INPUT FILE: /data/scratch/pepinme/Napoli/Input/fastq/ASC_5_AZA_4_10_R1_001.fastq.gz
+=============================================
+17115269 sequences processed in total
+Sequences were truncated to a varying degree because of deteriorating qualities (Phred score quality cutoff: 20):	2980421 (17.4%)
+RRBS reads trimmed by additional 2 bp when adapter contamination was detected:	10259266 (59.9%)
+RRBS reads trimmed by 2 bp at the start when read started with CAA (724) or CGA (5072) in total:	5796 (0.0%)
+
