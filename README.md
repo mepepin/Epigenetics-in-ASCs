@@ -36,13 +36,13 @@ always_allow_html: yes
 **Institution**: University of Alabama at Birmingham
 **Location**: 542 Biomedical Research Building 2, Birmingham, AL 35294
 
-#Genome Assembly and Alignment
-##Genome Assembly
+# Genome Assembly and Alignment
+## Genome Assembly
 The first task was to align the bisulfite reduced and sequenced reads to a genome assembly. To accomplish this, an annotated human genome assembly was prepared based on Gencode annotation (gencode.v28.annotation.gtf) and sequence (GRCh38.p12.genome.fa).
 `bwameth.py index /data/scratch/pepinme/Napoli/Input/Genome/GRCh38.p12.genome.fa`
 
 The sequencing data were then trimmed and aligned using the following batch script:
-##Adapter and Read Quality Trimming
+## Adapter and Read Quality Trimming
 Once the genome assembly was created, adapter sequences were trimmed and sequencing quality assessed via trim_galore and FastQC, respectively.
 
 `trim_galore \`
@@ -50,7 +50,7 @@ Once the genome assembly was created, adapter sequences were trimmed and sequenc
 `--paired --rrbs --non_directional --length 20 --fastqc \`
 `$INPUT_DIR/fastq/${VAR}_R1_001.fastq.gz $INPUT_DIR/fastq/${VAR}_R2_001.fastq.gz`
 
-##Read Alignment
+## Read Alignment
 All .fastq files were then aligned to the genome assemblies using the following command:
 `bwameth.py --threads 8 \`
 `--reference $GENOME_DIR/GRCh38.p12.genome.fa \`
@@ -59,22 +59,22 @@ All .fastq files were then aligned to the genome assemblies using the following 
 
 Once aligned, we converted to .bam output.
 
-###Convert .sam to .bam
+### Convert .sam to .bam
 `samtools view -S -b $RESULTS_DIR/RRBS_bwa/${VAR}.sam > $RESULTS_DIR/RRBS_bwa/${VAR}.bam`
-###Sort using samtools
+### Sort using samtools
 `samtools sort $RESULTS_DIR/RRBS_bwa/${VAR}.bam -o $RESULTS_DIR/RRBS_bwa/${VAR}.sorted.bam`
-###create an index
+### create an index
 `samtools index $RESULTS_DIR/RRBS_bwa/${VAR}.sorted.bam`
-###MethylDackel
+### MethylDackel
 `MethylDackel extract $GENOME_DIR/GRCh38.p12.genome.fa $RESULTS_DIR/RRBS_bwa/${VAR}.sorted.bam -o $RESULTS_DIR/RRBS_bwa/${VAR}.counted --methylKit`
 
 Once finished, the CpG methylation was extracted as both bedgraph file (for UCSC genome browser) and bed file, which was then used to identify differentially-methylated cytosines (DMCs) and differentially-methylated regions (DMRs).
 
 The "*.counted" files that resulted from this process were then read into R (version 3.6.1) and combined into a single "object" for differential methylation analysis
 
-#Differential Methylation Analysis
+# Differential Methylation Analysis
 
-##Combining sample methylation
+## Combining sample methylation
 
 
 ```r
@@ -85,7 +85,7 @@ TREATMENT=c("VEH","AZA")
 CELL=c("ASC")
 
 ANALYSIS="ASC_AZAvCON"
-### "2" is Pre-LVAD, "3" is Post-LVAD, "1" is CON
+###  "2" is Pre-LVAD, "3" is Post-LVAD, "1" is CON
 library(methylKit)
 file.list <- list.files(path = paste0("../1_Input/Methyl/2_bwameth.out/", CELL), pattern = "*.counted_CpG.bedGraph", full.names = TRUE, all.files = TRUE)
 #Generate Column names (remove the extra nonsense from the path names)
@@ -186,7 +186,7 @@ filtered.myobj <- filterByCoverage(myobj_filtered, lo.count = 5, lo.perc = NULL,
 meth<-unite(filtered.myobj, destrand = FALSE) #When calculating DMRs, it is not helpful to "destrand"
 ```
 
-##Tiling Methylation Windows
+## Tiling Methylation Windows
 
 
 ```r
@@ -355,7 +355,7 @@ dm_annsum.tile = summarize_annotations(
     quiet = TRUE)
 ```
 
-#Heatmap of Differential Methylation
+# Heatmap of Differential Methylation
 
 
 ```r
@@ -580,11 +580,12 @@ circos.genomicLabels(Gene_labels, labels.column=4, side='inside', cex=0.6)
 circos.clear()
 ```
 
-#ELK4 Motif Enrichment
+# ELK4 Motif Enrichment
 
 
 ```r
 library(dplyr)
+library(circlize)
 ELK4_Anchor<-read.csv("../1_Input/ELK4/ELK4_Anchor.csv")
 ELK4<-read.csv("../1_Input/ELK4/ELK4_Targets.ENCODE.csv", col.names = FALSE)
 colnames(ELK4)<-"annot.symbol"
@@ -618,6 +619,12 @@ Down_anchor<-ELK4_Anchor[1:nrow(ELK4_targets_DOWN),]
 #Anchor
 ELK4_anchor<-read.csv("../1_Input/ELK4/ELK4_Anchor.csv")
 
+#Meth.diff
+ELK4_up.meth<-dplyr::filter(ELK4_DMR.Targets.Promoters, meth.diff>0)
+ELK4_up.meth<-ELK4_up.meth[,c("chr", "start", "end", "meth.diff")]
+ELK4_up.meth<-ELK4_up.meth %>% arrange(chr, start)
+Up_anchor<-ELK4_Anchor[1:nrow(ELK4_up.meth),]
+
 #Circular Plot
 om = circos.par("track.margin")
 oc = circos.par("cell.padding")
@@ -626,8 +633,16 @@ circos.par(start.degree = -190)
 pdf(file=paste0("../2_Output/", ANALYSIS, "/", ANALYSIS, "_Circos_ELK4.targets.pdf"))
 circos.initializeWithIdeogram(plotType = NULL)
 circos.genomicLabels(ELK4_targets.labels, labels.column=4, side='outside', cex=.8)
-# circos.genomicLink(ELK4_targets_DOWN, Down_anchor, 
-#                    col="dodgerblue3", lwd=2)
+circos.genomicTrackPlotRegion(ELK4_up.meth,
+                              ylim = c(0, 50), bg.border=NA,
+                              panel.fun = function(region, value, ...) {
+ col = ifelse(value[[1]] > 0, "coral2", "darkcyan")
+ circos.genomicPoints(region, value, col = add_transparency(col, 0.2), cex = 0.8, pch = 16)
+ cell.xlim = get.cell.meta.data("cell.xlim")
+ for(h in c(0, 10, 20, 30, 40, 50)) {
+   circos.lines(cell.xlim, c(h, h), col ="#00000040")
+ }
+}, track.height = 0.2)
 circos.genomicLink(ELK4_targets_UP, Up_anchor, 
                    col="black", lwd=2)
 circos.clear()
@@ -646,8 +661,16 @@ circos.par(track.margin = c(0, 0), cell.padding = c(0, 0, 0, 0))
 circos.par(start.degree = -190)
 circos.initializeWithIdeogram(plotType = NULL)
 circos.genomicLabels(ELK4_targets.labels, labels.column=4, side='outside', cex=.8)
-# circos.genomicLink(ELK4_targets_DOWN, Down_anchor, 
-#                    col="dodgerblue3", lwd=2)
+circos.genomicTrackPlotRegion(ELK4_up.meth,
+                              ylim = c(-100, 100), bg.border=NA,
+                              panel.fun = function(region, value, ...) {
+ col = ifelse(value[[1]] > 0, "coral2", "darkcyan")
+ circos.genomicPoints(region, value, col = add_transparency(col, 0.2), cex = 0.3, pch = 16)
+ cell.xlim = get.cell.meta.data("cell.xlim")
+ for(h in c(-50, 0, 50, 100)) {
+   circos.lines(cell.xlim, c(h, h), col ="#00000040")
+ }
+}, track.height = 0.2)
 circos.genomicLink(ELK4_targets_UP, Up_anchor, 
                    col="black", lwd=2)
 ```
@@ -658,7 +681,7 @@ circos.genomicLink(ELK4_targets_UP, Up_anchor,
 circos.clear()
 ```
 
-##Volcano Plot
+## Volcano Plot
 
 
 ```r
@@ -702,7 +725,7 @@ dev.off()
 ##                 2
 ```
 
-#Supplemental Table: R Session Information
+# Supplemental Table: R Session Information
 
 All packages and setting are acquired using the following command: 
 
